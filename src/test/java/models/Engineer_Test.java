@@ -2,6 +2,7 @@ package models;
 
 import org.junit.*;
 import static org.junit.Assert.*;
+import org.sql2o.*;
 
 public class Engineer_Test {
     @Test
@@ -28,4 +29,14 @@ public class Engineer_Test {
         Engineer anotherEngineer = new Engineer("Eric", "[email protected]");
         assertTrue(firstEngineer.equals(anotherEngineer));
     }
+
+    @Test
+    public void save_insertsObjectsIntoDatabase_Engineer() {
+        Engineer testEngineer = new Engineer("Eric", "[email protected]");
+        testEngineer.save();
+        assertTrue(Engineer.all().get(0).equals(testEngineer));
+    }
+
+
+
 }
