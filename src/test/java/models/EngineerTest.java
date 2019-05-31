@@ -4,7 +4,11 @@ import org.junit.*;
 import static org.junit.Assert.*;
 import org.sql2o.*;
 
-public class Engineer_Test {
+public class EngineerTest {
+
+    @Rule
+    public DatabaseRule database = new DatabaseRule();
+
     @Test
     public void engineer_InstantiatesCorrectly_true() {
         Engineer testEngineer = new Engineer("Eric", "[email protected]");
@@ -35,6 +39,16 @@ public class Engineer_Test {
         Engineer testEngineer = new Engineer("Eric", "[email protected]");
         testEngineer.save();
         assertTrue(Engineer.all().get(0).equals(testEngineer));
+    }
+
+    @Test
+    public void all_returnsAllInstancesOfEngineer_True(){
+        Engineer firstEngineer = new Engineer("Eric", "eric @eric.com");
+        firstEngineer.save();
+        Engineer secondEngineer = new Engineer("Mary", "mary@mary.com");
+        secondEngineer.save();
+        assertEquals(true, Engineer.all().get(0).equals(firstEngineer));
+        assertEquals(true, Engineer.all().get(0).equals(secondEngineer));
     }
 
 

@@ -1,6 +1,10 @@
 
 package models;
 
+import org.sql2o.*;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Engineer {
     private String firstname;
     private String email;
@@ -27,4 +31,22 @@ public class Engineer {
             return this.getFirstName().equals(newEngineer.getFirstName()) && this.getEmail().equals(newEngineer.getEmail());
         }
     }
+
+    public void save() {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "INSERT INTO engineers (firstname, email) VALUES (:name, email)";
+            con.createQuery(sql)
+                    .addParameter("firstname", this.firstname)
+                    .addParameter("email", this.email)
+                    .executeUpdate();
+        }
+    }
+
+    public static List<Engineer> all() {
+        String sql = "SELECT * FROM engineers";
+        try(Connection con = DB.sql2o.open()) {
+            return con.createQuery(sql).executeAndFetch(Engineer.class);
+        }
+    }
+
 }
