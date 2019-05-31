@@ -21,4 +21,11 @@ public class Engineer_Test {
         Engineer testEngineer = new Engineer("Eric", "[email protected]");
         assertEquals("[email protected]", testEngineer.getEmail());
     }
+
+    @Test
+    public void equals_returnsTrueIfFirstNameAndEmailAreSame(){
+        Engineer firstEngineer = new Engineer("Eric", "[email protected]");
+        Engineer anotherEngineer = new Engineer("Eric", "[email protected]");
+        assertTrue(firstEngineer.equals(anotherEngineer));
+    }
 }

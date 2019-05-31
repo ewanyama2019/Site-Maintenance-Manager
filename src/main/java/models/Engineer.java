@@ -17,4 +17,14 @@ public class Engineer {
     public String getEmail() {
         return email;
     }
+
+    @Override
+    public boolean equals(Object otherEngineer) {
+        if (!(otherEngineer instanceof Engineer)) {
+            return false;
+        } else {
+            Engineer newEngineer = (Engineer) otherEngineer;
+            return this.getFirstName().equals(newEngineer.getFirstName()) && this.getEmail().equals(newEngineer.getEmail());
+        }
+    }
 }
