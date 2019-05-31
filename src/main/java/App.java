@@ -1,7 +1,7 @@
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
-import java.util.Map;
+
 import java.util.HashMap;
 
 import static spark.Spark.*;
@@ -15,14 +15,12 @@ public class App {
             return new ModelAndView(new HashMap(), "index.hbs");
         }, new HandlebarsTemplateEngine());
 
-
-        get("/engineer", (request, response) -> {
-            return new ModelAndView(new HashMap(), "engineer.hbs");
+        get("/sites", (request, response) -> {
+            return new ModelAndView(new HashMap(), "sites.hbs");
         }, new HandlebarsTemplateEngine());
 
-
-        get("/site", (request, response) -> {
-            return new ModelAndView(new HashMap(), "site.hbs");
+        get("/engineers", (request, response) -> {
+            return new ModelAndView(new HashMap(), "engineers.hbs");
         }, new HandlebarsTemplateEngine());
 
         get("/faqs", (request, response) -> {
@@ -32,6 +30,7 @@ public class App {
         get("/success", (request, response) -> {
             return new ModelAndView(new HashMap(), "success.hbs");
         }, new HandlebarsTemplateEngine());
+
 
 
     }
