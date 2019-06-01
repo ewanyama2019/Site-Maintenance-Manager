@@ -8,6 +8,7 @@ import java.util.List;
 public class Engineer {
     private String firstname;
     private String email;
+    private int id;
 
     public Engineer(String firstname, String email) {
         this.firstname = firstname;
@@ -34,7 +35,7 @@ public class Engineer {
 
     public void save() {
         try(Connection con = DB.sql2o.open()) {
-            String sql = "INSERT INTO engineers (firstname, email) VALUES (:name, email)";
+            String sql = "INSERT INTO engineers (firstname, email) VALUES (:firstname, email)";
             con.createQuery(sql)
                     .addParameter("firstname", this.firstname)
                     .addParameter("email", this.email)
