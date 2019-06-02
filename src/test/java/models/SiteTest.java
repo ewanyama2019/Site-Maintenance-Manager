@@ -34,4 +34,20 @@ public class SiteTest {
         Site anotherSite = new Site("Sabasaba", 1);
         assertTrue(testSite.equals(anotherSite));
     }
+
+    @Test
+    public void save_returnsTrueIfDescriptionsAretheSame() {
+        Site testSite = new Site("Sabasaba", 1);
+        testSite.save();
+        assertTrue(Site.all().get(0).equals(testSite));
+    }
+
+    @Test
+    public void save_assignsIdtoSite() {
+        Site testSite = new Site("Sabasaba", 1;
+        testSite.save();
+        Site savedSite = Site.all().get(0);
+        assertEquals(savedMonster.getID(), testSite.getId();
+
+    }
 }

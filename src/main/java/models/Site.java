@@ -1,13 +1,18 @@
 package models;
 
+import org.sql2o.*;
+
+
 public class Site {
 
     private String name;
     private int engineerId;
+    private int id
 
     public Site(String name, int engineerId) {
         this.name = name;
         this.engineerId = engineerId;
+        this.id = id;
 
     }
 
@@ -28,4 +33,17 @@ public class Site {
             return this.getName().equals(newSite.getName()) && this.getEngineerId() == newSite.getEngineerId();
         }
     }
+
+    public void save() {
+        try(Connection con = DB.sql2o.open()) {
+            String sql ="INSERT INTO sites (name, engineerId) VALUES (:name, :engineerId)";
+            this.id = (int) con.createQuery(sql, true)
+                    .addParameter("name", this.name")
+                    .addParameter("engineerId", this.engineerId)
+                    .executeUpdate()
+                    .getKey();
+        }
+    }
+
+
 }
