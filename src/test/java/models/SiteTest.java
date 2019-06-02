@@ -47,7 +47,18 @@ public class SiteTest {
         Site testSite = new Site("Sabasaba", 1;
         testSite.save();
         Site savedSite = Site.all().get(0);
-        assertEquals(savedMonster.getID(), testSite.getId();
+        assertEquals(savedSite.getID(), testSite.getId();
+
+    }
+
+    @Test
+    public void all_returnsAllInstancesOfSItes_true() {
+        Site firstSite = new Site("Sabasaba", 1);
+        firstSite.save();
+        Site secondSite = new Site("Bombolulu", 1);
+        secondSite.save();
+        assertEquals(true, Site.all().get(0).equals(firstSite));
+        assertEquals(true, Site.all().get(1).equals(secondSite));
 
     }
 }
