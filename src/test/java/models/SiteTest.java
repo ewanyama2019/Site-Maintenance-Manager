@@ -15,4 +15,10 @@ public class SiteTest {
         Site testSite = new Site("Sabasaba", 1);
         assertEquals(true, testSite instanceof Site);
     }
+
+    @Test
+    public void Site_InstantiatesWithName_String() {
+        Site testSite = new Site("Sabasaba", 1);
+        assertEquals("Sabasaba", testSite.getName());
+    }
 }
