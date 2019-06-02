@@ -15,11 +15,14 @@ public class Site {
         this.name = name;
         this.engineerId = engineerId;
         this.id = id;
-
     }
 
     public String getName() {
         return name;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public int getEngineerId() {
@@ -40,7 +43,7 @@ public class Site {
         try(Connection con = DB.sql2o.open()) {
             String sql ="INSERT INTO sites (name, engineerId) VALUES (:name, :engineerId)";
             this.id = (int) con.createQuery(sql, true)
-                    .addParameter("name", this.name")
+                    .addParameter("name", this.name)
                     .addParameter("engineerId", this.engineerId)
                     .executeUpdate()
                     .getKey();
@@ -53,6 +56,17 @@ public class Site {
             return con.createQuery(sql).executeAndFetch(Site.class);
         }
     }
+
+    public static Site find(int id) {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "SELECT * FROM sites where id=:id";
+            Site site = con.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(Site.class);
+            return site;
+        }
+    }
+
 
 
 }

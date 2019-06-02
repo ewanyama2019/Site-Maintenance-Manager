@@ -14,6 +14,7 @@ public class Engineer {
     public Engineer(String firstname, String email) {
         this.firstname = firstname;
         this.email = email;
+        this.id = id;
     }
 
     public String getFirstName() {

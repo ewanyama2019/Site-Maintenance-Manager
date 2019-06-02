@@ -3,6 +3,8 @@ package models;
 import org.junit.*;
 import static org.junit.Assert.*;
 import org.sql2o.*;
+import java.util.Arrays;
+
 
 
 public class SiteTest {
@@ -43,16 +45,16 @@ public class SiteTest {
     }
 
     @Test
-    public void save_assignsIdtoSite() {
-        Site testSite = new Site("Sabasaba", 1;
+    public void save_assignsIdToSite() {
+        Site testSite = new Site("Sabasaba", 1);
         testSite.save();
         Site savedSite = Site.all().get(0);
-        assertEquals(savedSite.getID(), testSite.getId();
+        assertEquals(savedSite.getId(), testSite.getId());
 
     }
 
     @Test
-    public void all_returnsAllInstancesOfSItes_true() {
+    public void all_returnsAllInstancesOfSites_true() {
         Site firstSite = new Site("Sabasaba", 1);
         firstSite.save();
         Site secondSite = new Site("Bombolulu", 1);
@@ -61,4 +63,26 @@ public class SiteTest {
         assertEquals(true, Site.all().get(1).equals(secondSite));
 
     }
+
+    @Test
+    public void find_returnSiteWithSameId_secondSite() {
+        Site firstSite = new Site("Sabasaba", 1);
+        firstSite.save();
+        Site secondSite = new Site("Bombolulu", 3);
+        secondSite.save();
+        assertEquals(Site.find(secondSite.getId()), secondSite);
+    }
+
+    @Test
+    public void save_savesEngineerIDIntoDB_true() {
+        Engineer testEngineer = new Engineer("Eric", "eric@eric.com");
+        testEngineer.save();
+        Site testSite = new Site("Sabasaba", testEngineer.getId());
+        testSite.save();
+        Site savedSite = Site.find(testSite.getId());
+        assertEquals(savedSite.getEngineerId(), testEngineer.getId());
+
+    }
+
+
 }
