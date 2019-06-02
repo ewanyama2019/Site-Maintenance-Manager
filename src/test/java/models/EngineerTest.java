@@ -42,13 +42,13 @@ public class EngineerTest {
     }
 
     @Test
-    public void all_returnsAllInstancesOfEngineer_True(){
-        Engineer firstEngineer = new Engineer("Eric", "eric @eric.com");
+    public void all_returnsAllInstancesOfEngineer_true() {
+        Engineer firstEngineer = new Engineer("Eric", "eric@eric.com");
         firstEngineer.save();
         Engineer secondEngineer = new Engineer("Mary", "mary@mary.com");
         secondEngineer.save();
         assertEquals(true, Engineer.all().get(0).equals(firstEngineer));
-        assertEquals(true, Engineer.all().get(0).equals(secondEngineer));
+        assertEquals(true, Engineer.all().get(1).equals(secondEngineer));
     }
 
 

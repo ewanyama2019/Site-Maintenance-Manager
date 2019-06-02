@@ -7,7 +7,7 @@ public class DatabaseRule extends ExternalResource{
 
     @Override
     protected void before() {
-        DB.sql2o = new Sql2o("jdbc:postgresql://localhost:5432/site_maintenance_test", "backtracet", "wanyama123"); //Those with linux or windows use two strings for username and password
+        DB.sql2o = new Sql2o("jdbc:postgresql://localhost:5432/site_maintenance_test", "postgres", "wanyama123"); //Those with linux or windows use two strings for username and password
     }
 
     @Override

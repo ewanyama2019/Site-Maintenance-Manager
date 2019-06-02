@@ -2,12 +2,13 @@
 package models;
 
 import org.sql2o.*;
-import java.util.ArrayList;
+
 import java.util.List;
 
+
 public class Engineer {
-    private String firstname;
-    private String email;
+    private final String firstname;
+    private final String email;
     private int id;
 
     public Engineer(String firstname, String email) {
@@ -16,10 +17,12 @@ public class Engineer {
     }
 
     public String getFirstName() {
+
         return firstname;
     }
 
     public String getEmail() {
+
         return email;
     }
 
@@ -34,12 +37,13 @@ public class Engineer {
     }
 
     public void save() {
-        try(Connection con = DB.sql2o.open()) {
-            String sql = "INSERT INTO engineers (firstname, email) VALUES (:firstname, email)";
+        try(Connection con =DB.sql2o.open()) {
+            String sql = "INSERT INTO engineers (firstname, email) VALUES (:firstname, :email)";
             con.createQuery(sql)
-                    .addParameter("firstname", this.firstname)
-                    .addParameter("email", this.email)
-                    .executeUpdate();
+                        .addParameter("firstname", this.firstname)
+                        .addParameter("email", this.email)
+                        .executeUpdate();
+
         }
     }
 
