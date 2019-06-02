@@ -59,6 +59,15 @@ public class EngineerTest {
         assertEquals(testEngineer.getId(), savedEngineer.getId());
     }
 
+    @Test
+    public void find_returnsEngineerWithSamaId_secondEngineer() {
+        Engineer firstEngineer = new Engineer("Eric", "eric@eric.com");
+        firstEngineer.save();
+        Engineer secondEngineer = new Engineer("Mary", "mary@mary.com");
+        secondEngineer.save();
+        assertEquals(Engineer.find(secondEngineer.getId()), secondEngineer);
+    }
+
 
 
 }

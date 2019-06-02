@@ -59,4 +59,14 @@ public class Engineer {
         }
     }
 
+    public static Engineer find(int id) {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "SELECT * FROM engineers where id=:id";
+            Engineer engineer = con.createQuery(sql)
+                .addParameter("id", id)
+                .executeAndFetchFirst(Engineer.class);
+            return engineer;
+        }
+    }
+
 }
