@@ -21,4 +21,17 @@ public class SiteTest {
         Site testSite = new Site("Sabasaba", 1);
         assertEquals("Sabasaba", testSite.getName());
     }
+
+    @Test
+    public void Site_InstantiatesWithEngineerId_int() {
+        Site testSite = new Site("Sabasaba", 1);
+        assertEquals(1, testSite.getEngineerId());
+    }
+
+    @Test
+    public void equals_returnsTrueIfNameAndEngineerIdAreSame_true() {
+        Site testSite = new Site("Sabasaba", 1);
+        Site anotherSite = new Site("Sabasaba", 1);
+        assertTrue(testSite.equals(anotherSite));
+    }
 }
