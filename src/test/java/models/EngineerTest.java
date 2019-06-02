@@ -51,6 +51,14 @@ public class EngineerTest {
         assertEquals(true, Engineer.all().get(1).equals(secondEngineer));
     }
 
+    @Test
+    public void save_assignedIdToObject() {
+        Engineer testEngineer = new Engineer("Eric", "eric@eric.com");
+        testEngineer.save();
+        Engineer savedEngineer = Engineer.all().get(0);
+        assertEquals(testEngineer.getId(), savedEngineer.getId());
+    }
+
 
 
 }

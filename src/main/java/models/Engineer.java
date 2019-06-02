@@ -2,13 +2,13 @@
 package models;
 
 import org.sql2o.*;
-
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class Engineer {
-    private final String firstname;
-    private final String email;
+    private String firstname;
+    private String email;
     private int id;
 
     public Engineer(String firstname, String email) {
@@ -26,6 +26,10 @@ public class Engineer {
         return email;
     }
 
+    public int getId() {
+        return id;
+    }
+
     @Override
     public boolean equals(Object otherEngineer) {
         if (!(otherEngineer instanceof Engineer)) {
@@ -39,10 +43,11 @@ public class Engineer {
     public void save() {
         try(Connection con =DB.sql2o.open()) {
             String sql = "INSERT INTO engineers (firstname, email) VALUES (:firstname, :email)";
-            con.createQuery(sql)
-                        .addParameter("firstname", this.firstname)
-                        .addParameter("email", this.email)
-                        .executeUpdate();
+            this.id = (int) con.createQuery(sql, true)
+                .addParameter("firstname", this.firstname)
+                .addParameter("email", this.email)
+                .executeUpdate()
+                .getKey();
 
         }
     }
