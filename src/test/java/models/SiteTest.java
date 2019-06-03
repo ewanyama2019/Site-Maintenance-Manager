@@ -83,17 +83,7 @@ public class SiteTest {
         assertEquals(savedSite.getEngineerId(), testEngineer.getId());
     }
 
-    @Test
-    public void getSites_retrievesAllSitesFromDatabase_sitesList() {
-        Engineer testEngineer = new Engineer("Eric", "eric@eric.com");
-        testEngineer.save();
-        Site firstSite = new Site("Sabasaba", testEngineer.getId());
-        firstSite.save();
-        Site secondSite = new Site("Bombolulu", testEngineer.getId());
-        secondSite.save();
-        Site[] sites = new Site[] {firstSite, secondSite};
-        assertTrue(testEngineer.getSites().containsAll(Arrays.asList(sites)));
-    }
+
 
 
 }
