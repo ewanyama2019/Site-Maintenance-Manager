@@ -29,6 +29,18 @@ public class Site {
         return engineerId;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEngineerId(int engineerId) {
+        this.engineerId = engineerId;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public boolean equals(Object otherSite) {
         if (!(otherSite instanceof Site)) {
