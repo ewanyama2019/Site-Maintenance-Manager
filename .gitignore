@@ -46,3 +46,7 @@ out
 ############
 .idea
 .idea/
+
+
+!gradle-wrapper.jar
+
