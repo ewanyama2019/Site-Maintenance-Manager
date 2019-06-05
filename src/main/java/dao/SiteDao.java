@@ -6,11 +6,8 @@ import java.util.List;
 
 public interface SiteDao {
 
-    //LIST ALL SITES
-    //List<Site> all();
-
-    // SAVE TO DATABASE
-    void save(Site site);
+    // CREATE :SAVE TO DATABASE
+    void saveSite(Site site);
 
     // READ SITES BY ID
     //Site find(int id);

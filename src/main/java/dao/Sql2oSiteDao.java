@@ -14,11 +14,11 @@ public class Sql2oSiteDao implements SiteDao {  //implementing our interface
     }
 
     @Override
-    public void save(Site site) {
+    public void saveSite(Site site) {
         try(Connection con = DB.sql2o.open()) { //try to open a connection
             String sql ="INSERT INTO sites (name, engineerId) VALUES (:name, :engineerId)"; //raw sql
             int id = (int) con.createQuery(sql, true) //make a new variable
-                    .addParameter("name", site.getName())
+                    .addParameter("name", site.getSiteName())
                     .addParameter("engineerId", site.getEngineerId())
                     .executeUpdate()
                     .getKey();

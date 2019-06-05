@@ -12,73 +12,86 @@ public class EngineerTest {
 
     @Test
     public void engineer_InstantiatesCorrectly_true() {
-        Engineer testEngineer = new Engineer("Eric", "[email protected]");
+        Engineer testEngineer = new Engineer("Eric","Wanyama", "EK0001", "[email protected]");
         assertEquals(true, testEngineer instanceof Engineer);
     }
 
     @Test
     public void getFirstName_engineerInstantiatesWithFirstName_Eric() {
-        Engineer testEngineer = new Engineer("Eric", "[email protected]");
+        Engineer testEngineer = new Engineer("Eric", "Wanyama", "EK0001", "[email protected]");
         assertEquals("Eric", testEngineer.getFirstName());
     }
 
     @Test
-    public void getEmail_engineerInstantiatesWithEmail_String() {
-        Engineer testEngineer = new Engineer("Eric", "[email protected]");
-        assertEquals("[email protected]", testEngineer.getEmail());
+    public void getLastname_engineerInstantiatesWithLastname_String() {
+        Engineer testEngineer = new Engineer("Eric", "Wanyama", "EK0001", "[email protected]");
+        assertEquals("Wanyama", testEngineer.getLasttName());
     }
 
     @Test
+    public void getEk_number_engineerInstantiatesWithEknumber_String() {
+        Engineer testEngineer = new Engineer("Eric", "Wanyama", "EK0001", "eric@eric.com");
+        assertEquals("EK0001", testEngineer.getEk_number());
+    }
+
+    @Test
+    public void getEmail_engineerInstantiatesWithEmail_String() {
+        Engineer testEngineer = new Engineer("Eric", "Wanyama", "EK0001", "[email protected]");
+        assertEquals("[email protected]", testEngineer.getEmail());
+    }
+
+
+    @Test
     public void equals_returnsTrueIfFirstNameAndEmailAreSame(){
-        Engineer firstEngineer = new Engineer("Eric", "[email protected]");
-        Engineer anotherEngineer = new Engineer("Eric", "[email protected]");
+        Engineer firstEngineer = new Engineer("Eric", "Wanyama", "EK0001", "[email protected]");
+        Engineer anotherEngineer = new Engineer("Eric", "Wanyama", "EK0001", "[email protected]");
         assertTrue(firstEngineer.equals(anotherEngineer));
     }
 
     @Test
-    public void save_insertsObjectsIntoDatabase_Engineer() {
-        Engineer testEngineer = new Engineer("Eric", "[email protected]");
-        testEngineer.save();
-        assertTrue(Engineer.all().get(0).equals(testEngineer));
+    public void saveEngineer_insertsObjectsIntoDatabase_Engineer() {
+        Engineer testEngineer = new Engineer("Eric", "Wanyama", "EK0001", "[email protected]");
+        testEngineer.saveEngineer();
+        assertTrue(Engineer.listAllEngineers().get(0).equals(testEngineer));
     }
 
     @Test
-    public void all_returnsAllInstancesOfEngineer_true() {
-        Engineer firstEngineer = new Engineer("Eric", "eric@eric.com");
-        firstEngineer.save();
-        Engineer secondEngineer = new Engineer("Mary", "mary@mary.com");
-        secondEngineer.save();
-        assertEquals(true, Engineer.all().get(0).equals(firstEngineer));
-        assertEquals(true, Engineer.all().get(1).equals(secondEngineer));
+    public void listAll_returnsAllInstancesOfEngineer_true() {
+        Engineer firstEngineer = new Engineer("Eric", "Wanyama", "EK0001", "eric@eric.com");
+        firstEngineer.saveEngineer();
+        Engineer secondEngineer = new Engineer("Mary", "Wamboi", "EK0002", "mary@mary.com");
+        secondEngineer.saveEngineer();
+        assertEquals(true, Engineer.listAllEngineers().get(0).equals(firstEngineer));
+        assertEquals(true, Engineer.listAllEngineers().get(1).equals(secondEngineer));
     }
 
     @Test
-    public void save_assignedIdToObject() {
-        Engineer testEngineer = new Engineer("Eric", "eric@eric.com");
-        testEngineer.save();
-        Engineer savedEngineer = Engineer.all().get(0);
+    public void saveEngineer_assignedIdToObject() {
+        Engineer testEngineer = new Engineer("Eric", "Wanyama", "EK0001", "eric@eric.com");
+        testEngineer.saveEngineer();
+        Engineer savedEngineer = Engineer.listAllEngineers().get(0);
         assertEquals(testEngineer.getId(), savedEngineer.getId());
     }
 
     @Test
-    public void find_returnsEngineerWithSamaId_secondEngineer() {
-        Engineer firstEngineer = new Engineer("Eric", "eric@eric.com");
-        firstEngineer.save();
-        Engineer secondEngineer = new Engineer("Mary", "mary@mary.com");
-        secondEngineer.save();
-        assertEquals(Engineer.find(secondEngineer.getId()), secondEngineer);
+    public void findEngineer_returnsEngineerWithSamaId_secondEngineer() {
+        Engineer firstEngineer = new Engineer("Eric", "Wanyama", "EK0001", "eric@eric.com");
+        firstEngineer.saveEngineer();
+        Engineer secondEngineer = new Engineer("Mary", "Wamboi", "EK0002", "mary@mary.com");
+        secondEngineer.saveEngineer();
+        assertEquals(Engineer.findEngineer(secondEngineer.getId()), secondEngineer);
     }
 
     @Test
-    public void getSites_retrievesAllSitesFromDatabase_sitesList() {
-        Engineer testEngineer = new Engineer("Eric", "eric@eric.com");
-        testEngineer.save();
-        Site firstSite = new Site("Sabasaba", testEngineer.getId());
-        firstSite.save();
-        Site secondSite = new Site("Bombolulu", testEngineer.getId());
-        secondSite.save();
+    public void getEngineerSites_retrievesAllSitesFromDatabase_sitesList() {
+        Engineer testEngineer = new Engineer("Eric", "Wanyama", "EK0001", "eric@eric.com");
+        testEngineer.saveEngineer();
+        Site firstSite = new Site("Sabasaba", "CO_0002", "Coast", "Mombasa", testEngineer.getId());
+        firstSite.saveSite();
+        Site secondSite = new Site("Bombolulu", "CO_0003", "Coast", "Mombasa", testEngineer.getId());
+        secondSite.saveSite();
         Site[] sites = new Site[] {firstSite, secondSite};
-        assertTrue(testEngineer.getSites().containsAll(Arrays.asList(sites)));
+        assertTrue(testEngineer.getEngineerSites().containsAll(Arrays.asList(sites)));
     }
 
 
