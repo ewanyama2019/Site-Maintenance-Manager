@@ -82,17 +82,17 @@ public class EngineerTest {
         assertEquals(Engineer.findEngineer(secondEngineer.getId()), secondEngineer);
     }
 
-    @Test
-    public void getEngineerSites_retrievesAllSitesFromDatabase_sitesList() {
-        Engineer testEngineer = new Engineer("Eric", "Wanyama", "EK0001", "eric@eric.com");
-        testEngineer.saveEngineer();
-        Site firstSite = new Site("Sabasaba", "CO_0002", "Coast", "Mombasa", testEngineer.getId());
-        firstSite.saveSite();
-        Site secondSite = new Site("Bombolulu", "CO_0003", "Coast", "Mombasa", testEngineer.getId());
-        secondSite.saveSite();
-        Site[] sites = new Site[] {firstSite, secondSite};
-        assertTrue(testEngineer.getEngineerSites().containsAll(Arrays.asList(sites)));
-    }
+//    @Test
+//    public void getEngineerSites_retrievesAllSitesFromDatabase_sitesList() {
+//        Engineer testEngineer = new Engineer("Eric", "Wanyama", "EK0001", "eric@eric.com");
+//        testEngineer.saveEngineer();
+//        Site firstSite = new Site("Sabasaba", "CO_0002", "Coast", "Mombasa", testEngineer.getId());
+//        firstSite.saveSite();
+//        Site secondSite = new Site("Bombolulu", "CO_0003", "Coast", "Mombasa", testEngineer.getId());
+//        secondSite.saveSite();
+//        Site[] sites = new Site[] {firstSite, secondSite};
+//        assertTrue(testEngineer.getEngineerSites().containsAll(Arrays.asList(sites)));
+//    }
 
 
 

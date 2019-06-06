@@ -6,21 +6,23 @@ import java.util.List;
 
 public interface SiteDao {
 
+    //LIST ALL SITES
+    List<Site> listAllSites();
+
     // CREATE :SAVE TO DATABASE
     void saveSite(Site site);
 
     // READ SITES BY ID
-    //Site find(int id);
+    Site findSite(int id);
 
-    // READ SITE BY ENGINEER ID
+    // UPDATE
+    void updateSite();
+
+    // DELETE SITE BY ID
+    void deleteSitesById(int id);
 
 
-    // CREATE
+    // DELETE ALL SITES
+    void ClearAllSites();
 
-
-    //UPDATE
-
-    // DELETE
-    //void deleteById(int id);
-    //void clearAllEngineers();
 }

@@ -94,45 +94,45 @@ public class Site {
     }
 
     public int hashCode() {
-        return Objects.hash(getSiteName(), getSite_id(), getRegion(), getLocation(), getEngineerId())
+        return Objects.hash(getSiteName(), getSite_id(), getRegion(), getLocation(), getEngineerId());
     }
 
     // ---------------------- SAVE SITES METHOD - CREATES RECORD IN DB ------------------------
 
-    public void saveSite() {
-        try(Connection con = DB.sql2o.open()) {
-            String sql ="INSERT INTO sites (site_name, site_id, region, location, engineerId) VALUES (:site_name, :site_id, :region, :location, :engineerId)";
-            this.id = (int) con.createQuery(sql, true)
-                    .addParameter("site_name", this.site_name)
-                    .addParameter("site_id", this.site_id)
-                    .addParameter("region", this.region)
-                    .addParameter("location", this.location)
-                    .addParameter("engineerId", this.engineerId)
-                    .executeUpdate()
-                    .getKey();
-        }
-    }
+//    public void saveSite() {
+//        try(Connection con = DB.sql2o.open()) {
+//            String sql ="INSERT INTO sites (site_name, site_id, region, location, engineerId) VALUES (:site_name, :site_id, :region, :location, :engineerId)";
+//            this.id = (int) con.createQuery(sql, true)
+//                    .addParameter("site_name", this.site_name)
+//                    .addParameter("site_id", this.site_id)
+//                    .addParameter("region", this.region)
+//                    .addParameter("location", this.location)
+//                    .addParameter("engineerId", this.engineerId)
+//                    .executeUpdate()
+//                    .getKey();
+//        }
+//    }
 
     // ---------------------LISTALLSITES METHOD - LIST ALL SITES RECORDS IN THE DB -------------
-
-    public static List<Site> listAllSites() {
-        String sql = "SELECT * FROM sites";
-        try(Connection con = DB.sql2o.open()) {
-            return con.createQuery(sql).executeAndFetch(Site.class);
-        }
-    }
+//
+//    public static List<Site> listAllSites() {
+//        String sql = "SELECT * FROM sites";
+//        try(Connection con = DB.sql2o.open()) {
+//            return con.createQuery(sql).executeAndFetch(Site.class);
+//        }
+//    }
 
     //---------------------FINDSITE METHOD - FIND SITE BY ENGINEER_ID --------------------------
 
-    public static Site findSite(int id) {
-        try(Connection con = DB.sql2o.open()) {
-            String sql = "SELECT * FROM sites where id=:id";
-            Site site = con.createQuery(sql)
-                    .addParameter("id", id)
-                    .executeAndFetchFirst(Site.class);
-            return site;
-        }
-    }
+//    public static Site findSite(int id) {
+//        try(Connection con = DB.sql2o.open()) {
+//            String sql = "SELECT * FROM sites where id=:id";
+//            Site site = con.createQuery(sql)
+//                    .addParameter("id", id)
+//                    .executeAndFetchFirst(Site.class);
+//            return site;
+//        }
+//    }
 
 
 

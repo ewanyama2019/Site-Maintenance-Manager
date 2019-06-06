@@ -37,51 +37,51 @@ public class SiteTest {
         assertTrue(testSite.equals(anotherSite));
     }
 
-    @Test
-    public void saveSite_returnsTrueIfDescriptionsAretheSame() {
-        Site testSite = new Site("Sabasaba", "CO_0002", "Coast", "Mombasa", 1);
-        testSite.saveSite();
-        assertTrue(Site.listAllSites().get(0).equals(testSite));
-    }
-
-    @Test
-    public void saveSite_assignsIdToSite() {
-        Site testSite = new Site("Sabasaba", "CO_0002", "Coast", "Mombasa", 1);
-        testSite.saveSite();
-        Site savedSite = Site.listAllSites().get(0);
-        assertEquals(savedSite.getId(), testSite.getId());
-
-    }
-
-    @Test
-    public void listAllSites_returnsAllInstancesOfSites_true() {
-        Site firstSite = new Site("Sabasaba", "CO_0002", "Coast", "Mombasa", 1);
-        firstSite.saveSite();
-        Site secondSite = new Site("Bombolulu", "CO_0003", "Coast", "Mombasa", 1);
-        secondSite.saveSite();
-        assertEquals(true, Site.listAllSites().get(0).equals(firstSite));
-        assertEquals(true, Site.listAllSites().get(1).equals(secondSite));
-
-    }
-
-    @Test
-    public void findSite_returnSiteWithSameId_secondSite() {
-        Site firstSite = new Site("Sabasaba", "CO_0002", "Coast", "Mombasa", 1);
-        firstSite.saveSite();
-        Site secondSite = new Site("Bombolulu", "CO_0003", "Coast", "Mombasa", 3);
-        secondSite.saveSite();
-        assertEquals(Site.findSite(secondSite.getId()), secondSite);
-    }
-
-    @Test
-    public void saveSite_savesEngineerIDIntoDB_true() {
-        Engineer testEngineer = new Engineer("Eric", "Wanyama", "EK0001", "[email protected]");
-        testEngineer.saveEngineer();
-        Site testSite = new Site("Sabasaba", "CO_0002", "Coast", "Mombasa", testEngineer.getId());
-        testSite.saveSite();
-        Site savedSite = Site.findSite(testSite.getId());
-        assertEquals(savedSite.getEngineerId(), testEngineer.getId());
-    }
+//    @Test
+//    public void saveSite_returnsTrueIfDescriptionsAretheSame() {
+//        Site testSite = new Site("Sabasaba", "CO_0002", "Coast", "Mombasa", 1);
+//        testSite.saveSite();
+//        assertTrue(Site.listAllSites().get(0).equals(testSite));
+//    }
+//
+//    @Test
+//    public void saveSite_assignsIdToSite() {
+//        Site testSite = new Site("Sabasaba", "CO_0002", "Coast", "Mombasa", 1);
+//        testSite.saveSite();
+//        Site savedSite = Site.listAllSites().get(0);
+//        assertEquals(savedSite.getId(), testSite.getId());
+//
+//    }
+//
+//    @Test
+//    public void listAllSites_returnsAllInstancesOfSites_true() {
+//        Site firstSite = new Site("Sabasaba", "CO_0002", "Coast", "Mombasa", 1);
+//        firstSite.saveSite();
+//        Site secondSite = new Site("Bombolulu", "CO_0003", "Coast", "Mombasa", 1);
+//        secondSite.saveSite();
+//        assertEquals(true, Site.listAllSites().get(0).equals(firstSite));
+//        assertEquals(true, Site.listAllSites().get(1).equals(secondSite));
+//
+//    }
+//
+//    @Test
+//    public void findSite_returnSiteWithSameId_secondSite() {
+//        Site firstSite = new Site("Sabasaba", "CO_0002", "Coast", "Mombasa", 1);
+//        firstSite.saveSite();
+//        Site secondSite = new Site("Bombolulu", "CO_0003", "Coast", "Mombasa", 3);
+//        secondSite.saveSite();
+//        assertEquals(Site.findSite(secondSite.getId()), secondSite);
+//    }
+//
+//    @Test
+//    public void saveSite_savesEngineerIDIntoDB_true() {
+//        Engineer testEngineer = new Engineer("Eric", "Wanyama", "EK0001", "[email protected]");
+//        testEngineer.saveEngineer();
+//        Site testSite = new Site("Sabasaba", "CO_0002", "Coast", "Mombasa", testEngineer.getId());
+//        testSite.saveSite();
+//        Site savedSite = Site.findSite(testSite.getId());
+//        assertEquals(savedSite.getEngineerId(), testEngineer.getId());
+//    }
 
 
 

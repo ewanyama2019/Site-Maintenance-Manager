@@ -10,6 +10,7 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
@@ -22,6 +23,13 @@ dependencies {
     compile group: 'org.apache.velocity', name: 'velocity', version: '1.7'
 }
 
+test {
+    testLogging {
+        exceptionFormat = 'full' events 'passed'->'skipped failed'
+    }
+}
+
 applicationName = "sitemaintenancemanager"
 mainClassName = 'App'
 task stage(dependsOn: ['clean', 'installDist'])
+
