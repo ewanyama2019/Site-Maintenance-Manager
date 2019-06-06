@@ -15,8 +15,8 @@ public interface SiteDao {
     // READ SITES BY ID
     Site findSite(int id);
 
-    // UPDATE
-    void updateSite();
+//    // UPDATE
+//    void updateSite();
 
     // DELETE SITE BY ID
     void deleteSitesById(int id);

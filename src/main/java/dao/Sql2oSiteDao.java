@@ -55,20 +55,20 @@ public class Sql2oSiteDao implements SiteDao {  //implementing our interface
     }
 
     // --------------------UPDATE METHOD------------------------- //
-    @Override
-    public void updateSite(Site site) {
-        String sql = "UPDATE sites SET site_name = :site_name, site_id = :site_id, region = :region, location = location WHERE id=:id";
-        try(Connection con = DB.sql2o.open()) {
-            con.createQuery(sql)
-                    .addParameter("site_name", site.getSiteName())
-                    .addParameter("site_id", site.getSite_id())
-                    .addParameter("region", site.getRegion())
-                    .addParameter("location", site.getLocation())
-                    .addParameter("engineerId", site.getEngineerId())
-                    .addParameter("id", site.getId())
-                    .executeUpdate();
-        }
-    }
+//    @Override
+//    public void updateSite(Site site) {
+//        String sql = "UPDATE sites SET site_name = :site_name, site_id = :site_id, region = :region, location = location WHERE id=:id";
+//        try(Connection con = DB.sql2o.open()) {
+//            con.createQuery(sql)
+//                    .addParameter("site_name", site.getSiteName())
+//                    .addParameter("site_id", site.getSite_id())
+//                    .addParameter("region", site.getRegion())
+//                    .addParameter("location", site.getLocation())
+//                    .addParameter("engineerId", site.getEngineerId())
+//                    .addParameter("id", site.getId())
+//                    .executeUpdate();
+//        }
+//    }
 
     // -------------------DELETE SITE ----------------------------//
     @Override
